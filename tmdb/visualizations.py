@@ -3,18 +3,38 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 
-# Global style
-plt.style.use("seaborn-v0_8")
-sns.set_palette("viridis")
-plt.rcParams["figure.figsize"] = (10, 6)
-plt.rcParams["axes.titlesize"] = 16
-plt.rcParams["axes.labelsize"] = 13
+"""
+visualizations.py - Movie Analytics Dashboard Plots
 
+Purpose:
+Generate 5 publication-ready Matplotlib/Seaborn plots for Streamlit dashboard.
+Feature engineering for plotting (ROI, explode genres, movie_type).
 
-filepath = 'tmdb/processed_movies.csv'
+Plots:
+1. Revenue vs Budget scatter (success correlation)
+2. ROI boxplot by genre (genre profitability)
+3. Popularity vs Rating regression (quality-popularity link)
+4. Yearly revenue trend line
+5. Franchise vs Standalone bar chart
+
+Dependencies:
+- matplotlib, seaborn, pandas
+- processed_movies.csv
+
+Usage:
+```python
+from visualizations import plot_revenue_vs_budget
+fig = plot_revenue_vs_budget()
+```
+"""
+
+filepath = 'processed_movies.csv'
 
 
 def load_csv(filepath):
+    """
+    CSV loader for plotting context.
+    """
     if not os.path.exists(filepath):
         raise FileNotFoundError(f"CSV file not found: {filepath}")
 
@@ -45,94 +65,132 @@ df["movie_type"] = df["belongs_to_collection"].apply(
 )
 
 
-# Helper Function for Plotting
-def finalize_plot(title, xlabel="", ylabel="", save_path=None):
-    plt.title(title)
-    plt.xlabel(xlabel)
-    plt.ylabel(ylabel)
-    plt.tight_layout()
-    if save_path:
-        plt.savefig(save_path, dpi=300)
-    plt.plot([1, 2, 3], [4, 5, 6])
-    plt.savefig("my_plot.png")
-
-
 # Revenue vs Budget
 def plot_revenue_vs_budget():
-    plt.scatter(df["budget"], df["revenue"], alpha=0.7)
-    finalize_plot(
-        "Revenue vs Budget Trend",
-        xlabel="Budget ($)",
-        ylabel="Revenue ($)"
-    )
+    """
+    Revenue vs Budget scatter plot.
 
+    Visualizes core Hollywood success equation.
+
+    Returns:
+    --------
+    matplotlib.figure.Figure
+        Ready for Streamlit st.pyplot()
+
+    Insights:
+    - Strong positive correlation expected
+    - Outliers = breakout hits
+    """
+    fig, ax = plt.subplots()
+    ax.scatter(df["budget"], df["revenue"], alpha=0.7)
+    ax.set_title("Revenue vs Budget")
+    ax.set_xlabel("Budget ($)")
+    ax.set_ylabel("Revenue ($)")
+    return fig
 
 # ROI Distribution by Genre
 
 # First, we explode genre
+
+
 def explode_genres():
+    """
+    Normalize genres for boxplot analysis (pipe → 1/row).
+    """
     df_copy = df.copy()
     df_copy["genres"] = df_copy["genres"].str.split("|")
     return df_copy.explode("genres")
 
 
 def plot_roi_by_genre():
+    """
+    Genre profitability boxplot (post-explosion).
+
+    Returns:
+    --------
+    matplotlib.figure.Figure
+        ROI distribution by genre
+
+    Insights:
+    - Animation/Adventure typically highest ROI
+    - Horror variable but high-upside
+    """
     genre_df = explode_genres()
 
-    sns.boxplot(data=genre_df, x="genres", y="roi")
-    plt.xticks(rotation=45, ha="right")
-
-    finalize_plot(
-        "ROI Distribution by Genre",
-        xlabel="Genre",
-        ylabel="ROI"
-    )
+    fig, ax = plt.subplots()
+    sns.boxplot(data=genre_df, x="genres", y="roi", ax=ax)
+    ax.set_title("ROI by Genre")
+    ax.tick_params(axis="x", rotation=45)
+    return fig
 
 
 # Popularity vs Rating
 
 def plot_popularity_vs_rating():
-    sns.regplot(
-        data=df,
-        x="vote_average",
-        y="popularity",
-        scatter_kws={"alpha": 0.6}
-    )
-    finalize_plot(
-        "Popularity vs Rating",
-        xlabel="Rating",
-        ylabel="Popularity"
-    )
+    """
+    Rating vs Popularity regression plot.
+
+    Tests quality-popularity hypothesis.
+
+    Returns:
+    --------
+    matplotlib.figure.Figure
+        Regression with confidence interval
+
+    Insights:
+    - Weak positive correlation typical
+    - Blockbusters sometimes rate lower
+    """
+    fig, ax = plt.subplots()
+    sns.regplot(data=df, x="vote_average", y="popularity",
+                scatter_kws={"alpha": 0.6}, ax=ax)
+    ax.set_title("Popularity vs Rating")
+    return fig
 
 
 # Yearly Box Office Trends
 def plot_yearly_box_office():
+    """
+    Average annual box office revenue trend.
+
+    Returns:
+    --------
+    matplotlib.figure.Figure
+        Line plot with markers
+
+    Insights:
+    - Inflation-adjusted trend upward
+    - Blockbuster era acceleration
+    """
+    fig, ax = plt.subplots()
     df["year"] = df["release_date"].dt.year
-
     yearly = df.groupby("year")["revenue"].mean()
-
-    yearly.plot(kind="line", marker="o")
-
-    finalize_plot(
-        "Yearly Average Box Office Revenue",
-        xlabel="Year",
-        ylabel="Mean Revenue ($)"
-    )
+    ax.plot(yearly.index, yearly.values, marker="o")
+    ax.set_title("Yearly Box Office Revenue")
+    return fig
 
 
-# Frnachise Vs Standalone
+# Franchise Vs Standalone
 def plot_franchise_vs_standalone():
+    """
+    Franchise advantage bar chart (4 metrics).
+
+    Returns:
+    --------
+    matplotlib.figure.Figure
+        Grouped bar chart
+
+    Insights:
+    - Franchises dominate revenue/ROI/popularity
+    - Ratings comparable (sequel dilution?)
+    """
+    fig, ax = plt.subplots()
     compare = df.groupby("movie_type").agg({
         "revenue": "mean",
         "roi": "mean",
         "popularity": "mean",
         "vote_average": "mean"
     })
-
-    compare.plot(kind="bar")
-
-    finalize_plot(
-        "Franchise vs Standalone Performance",
-        xlabel="Movie Type",
-        ylabel="Mean Metric Value"
-    )
+    compare.plot(kind="bar", ax=ax)
+    ax.set_title("Franchise vs Standalone Movies")
+    return fig
