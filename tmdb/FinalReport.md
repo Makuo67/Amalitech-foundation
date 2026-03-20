@@ -1,6 +1,6 @@
 # 🎬 TMDB Movie Analytics - Final Report
 
-**Data Engineer Analysis** | **Dataset:** 18 Blockbuster Movies | **Generated:** Automated Pipeline
+**Dataset:** TMDB Dataset
 
 ## 📋 Executive Summary
 
@@ -10,7 +10,7 @@
 **Revenue King:** Avengers Endgame ($2.8B)
 **Director:** James Cameron dominates revenue ($5B+ total)
 
-**Business Recommendation:** Prioritize franchise sequels with proven directors in Action/Sci-Fi genres.
+**Business Recommendation:** I would prioritize franchise sequels with proven directors in Action/Sci-Fi genres.
 
 ## 🔬 Methodology
 
@@ -45,18 +45,18 @@ Dashboard-ready Matplotlib/Seaborn figures
 
 ### 5. Interactive Dashboard
 
-Streamlit app with vote filtering
+Streamlit Dashboard
 
 ## 📊 Key Insights
 
 ### 1. Financial Performance
 
-| Metric  | #1                    | Value  |
-| ------- | --------------------- | ------ |
-| Revenue | Avengers Endgame      | $2.8B  |
-| ROI     | Avatar                | 12.3x  |
-| Profit  | Avengers Endgame      | $2.44B |
-| Budget  | Avengers Infinity War | $300M  |
+| Metric  | #1                 | Value |
+| ------- | ------------------ | ----- |
+| Revenue | Avatar             | $2.9B |
+| ROI     | Avatar             | 12.3x |
+| Profit  | Avatar             | $2.6B |
+| Budget  | Avengers: End Game | $356M |
 
 **Trend:** Revenue scales with budget (r=0.85), ROI more variable.
 
@@ -81,15 +81,9 @@ Streamlit app with vote filtering
 **Top 3 Directors:**
 | Director | Movies | Total Revenue | Avg Rating |
 |----------|--------|---------------|------------|
-| James Cameron | 3 | $5.48B | 7.77 |
-| Anthony Russo | 2 | $4.85B | 8.23 |
-| Joss Whedon | 2 | $2.92B | 7.64 |
-
-### 4. Genre Profitability (ROI Boxplot)
-
-- **Animation:** Highest median ROI, low variance
-- **Horror:** High-upside outliers
-- **Drama:** Lowest median, high loss risk
+| James Cameron | 2 | $5.87B | 7.75 |
+| Joss Whedon | 2 | $2.92B | 7.63 |
+| Jennifer Lee | 2 | $2.72B | 7.22 |
 
 ### 5. Market Trends (Visual Insights)
 
@@ -97,11 +91,11 @@ Streamlit app with vote filtering
 
 ![Popularity vs Rating Scatter](images/popularity_vs_rating.jpg)
 
-- **Yearly Revenue:** Exponential growth post-2009 (Marvel effect)
+- **Yearly Revenue:** Exponential growth pre-2009
 
 ![Yearly Box Office Trend](images/yearly_box_office_trend.jpg)
 
-- **Budget Scaling:** Bigger budgets → bigger hits (diminishing ROI returns)
+- **Budget Scaling:** Varies
 
 ![Revenue vs Budget Scatter](images/revenuevsbudget.jpg)
 
@@ -110,8 +104,8 @@ Streamlit app with vote filtering
 ### Strategic Insights
 
 1. **Franchise Focus:** 85% of top performers belong to collections
-2. **Budget Sweet Spot:** $200-300M maximizes ROI probability
-3. **Genre Priority:** Animation/Action > Drama
+2. **Budget Sweet Spot:** Big budgets does not necessarily mean high ROI
+3. **Genre Priority:** Drama, Romance and Fantasy have generally higher ROI
 
 ![ROI Distribution by Genre](images/roi_distribution.jpg)
 
@@ -121,10 +115,10 @@ Streamlit app with vote filtering
 
 ```
  - Complete ETL pipeline (API→Dashboard)
- - 100% documented codebase (Numpy          docstrings)
+ - 100% documented codebase
  - Interactive visualizations
  - Scalable ranking/search engines
- - Production Streamlit deployment ready
+ - Streamlit deployment
 ```
 
 ### Limitations & Future Work
@@ -138,5 +132,3 @@ Streamlit app with vote filtering
 - A/B testing framework
 
 ---
-
-**Pipeline Status:** Fully documented, production-ready. Run `streamlit run dashboard.py` to explore.

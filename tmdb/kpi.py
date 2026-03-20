@@ -25,7 +25,7 @@ print(highest_roi(df, top=5))  # Top 5 ROI movies (budget ≥$10M)
 ```
 """
 
-filepath = 'tmdb/processed_movies.csv'
+filepath = 'processed_movies.csv'
 
 
 def load_csv(filepath):
@@ -145,52 +145,52 @@ df = load_csv(filepath)
 
 
 def highest_revenue(df, top=10):
-    \"\"\"
+    """
     Top movies by box office revenue.
-    
+
     Parameters:
     -----------
     df : pd.DataFrame
         Movie dataset
     top : int, default 10
         Number of records
-        
+
     Returns:
     --------
     pd.DataFrame
         Top revenue movies
-    \"\"\"
+    """
     return rank_movies(df, column="revenue", ascending=False, limit=top)
 
 
 def highest_budget(df, top=5):
-    \"\"\"
+    """
     Biggest production budgets.
-    
+
     Parameters:
     -----------
     df : pd.DataFrame
         Movie dataset
     top : int, default 5
-        
+
     Returns:
     --------
     pd.DataFrame
         Highest budget movies
-    \"\"\"
+    """
     return rank_movies(df, column="budget", ascending=False, limit=top)
 
 
 def highest_profit(df, top=5):
     """
     Most profitable movies (revenue - budget).
-    
+
     Parameters:
     -----------
     df : pd.DataFrame
         Movie dataset
     top : int, default 5
-        
+
     Returns:
     --------
     pd.DataFrame
@@ -203,13 +203,13 @@ def highest_profit(df, top=5):
 def lowest_profit(df, top=5):
     """
     Biggest money losers (lowest profit).
-    
+
     Parameters:
     -----------
     df : pd.DataFrame
         Movie dataset
     top : int, default 5
-        
+
     Returns:
     --------
     pd.DataFrame
@@ -222,18 +222,18 @@ def lowest_profit(df, top=5):
 def highest_roi(df, top=10):
     """
     Best ROI performers (revenue/budget ratio, budget ≥$10M).
-    
+
     Parameters:
     -----------
     df : pd.DataFrame
         Movie dataset
     top : int, default 10
-        
+
     Returns:
     --------
     pd.DataFrame
         Top ROI movies (quality filter applied)
-        
+
     Notes:
     ------
     - Filters budget ≥$10M (business relevant)
@@ -263,13 +263,13 @@ def lowest_roi(df, top=10):
 def most_voted(df, top=5):
     """
     Most popular by audience votes.
-    
+
     Parameters:
     -----------
     df : pd.DataFrame
         Movie dataset
     top : int, default 5
-        
+
     Returns:
     --------
     pd.DataFrame
@@ -281,13 +281,13 @@ def most_voted(df, top=5):
 def highest_rated(df, top=5):
     """
     Best rated movies (vote_count ≥10 filter).
-    
+
     Parameters:
     -----------
     df : pd.DataFrame
         Movie dataset
     top : int, default 5
-        
+
     Returns:
     --------
     pd.DataFrame
@@ -305,13 +305,13 @@ def highest_rated(df, top=5):
 def lowest_rated(df, top=5):
     """
     Worst rated movies (vote_count ≥10 filter).
-    
+
     Parameters:
     -----------
     df : pd.DataFrame
         Movie dataset
     top : int, default 5
-        
+
     Returns:
     --------
     pd.DataFrame
@@ -329,13 +329,13 @@ def lowest_rated(df, top=5):
 def most_popular(df, top=5):
     """
     TMDB popularity leaders.
-    
+
     Parameters:
     -----------
     df : pd.DataFrame
         Movie dataset
     top : int, default 5
-        
+
     Returns:
     --------
     pd.DataFrame

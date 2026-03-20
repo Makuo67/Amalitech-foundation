@@ -25,7 +25,7 @@ print(franchise_success().head())
 ```
 """
 
-filepath = 'tmdb/processed_movies.csv'
+filepath = 'processed_movies.csv'
 
 
 def load_csv(filepath):
@@ -62,7 +62,9 @@ def add_movie_type():
 
     Note: Contains bug - needs df['movie_type'] = assignment.
     """
-    df["movie_type"]
+    df["movie_type"] = df["belongs_to_collection"].apply(
+        lambda x: "Franchise" if x is not pd.NA else "Standalone"
+    )
     return df
 
 
@@ -104,9 +106,9 @@ def compare_franchise_vs_standalone():
     return grouped
 
 
-# print("=============== Franchise vs Standalone ==================")
-# print(compare_franchise_vs_standalone())
-# print()
+print("=============== Franchise vs Standalone ==================")
+print(compare_franchise_vs_standalone())
+print()
 
 
 def franchise_success():
@@ -147,9 +149,9 @@ def franchise_success():
     return results.sort_values(by="total_revenue", ascending=False)
 
 
-# print("=============== Most Successful Movie Franchises ==================")
-# print(franchise_success())
-# print()
+print("=============== Most Successful Movie Franchises ==================")
+print(franchise_success())
+print()
 
 
 def top_franchise_by_metric(metric):
@@ -179,18 +181,18 @@ def top_franchise_by_metric(metric):
     return data.sort_values(by=metric, ascending=False).head(5)
 
 
-# print("Total number of movies in franchise")
-# print(top_franchise_by_metric('movie_count'))
-# print()
-# print("Top Franchise by Budget: ")
-# print(top_franchise_by_metric(["total_budget", "mean_budget"]))
-# print()
-# print("Top Franchise by revenue")
-# print(top_franchise_by_metric(["total_revenue", "mean_revenue"]))
-# print()
-# print("Top Franchise by Mean Rating")
-# print(top_franchise_by_metric('mean_rating'))
-# print()
+print("Total number of movies in franchise")
+print(top_franchise_by_metric('movie_count'))
+print()
+print("Top Franchise by Budget: ")
+print(top_franchise_by_metric(["total_budget", "mean_budget"]))
+print()
+print("Top Franchise by revenue")
+print(top_franchise_by_metric(["total_revenue", "mean_revenue"]))
+print()
+print("Top Franchise by Mean Rating")
+print(top_franchise_by_metric('mean_rating'))
+print()
 
 
 def explode_directors():
