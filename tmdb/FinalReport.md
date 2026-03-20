@@ -68,6 +68,8 @@ Streamlit app with vote filtering
 | Franchise | $1.2B | 4.8x | 17.2 | 7.5 |
 | Standalone | $780M | 1.1x | 12.8 | 7.4 |
 
+![Franchise vs Standalone Comparison](images/franchise vs standalone.jpg)
+
 **Top Franchises (total_revenue):**
 
 1. The Avengers Collection ($7.77B)
@@ -92,8 +94,16 @@ Streamlit app with vote filtering
 ### 5. Market Trends (Visual Insights)
 
 - **Popularity vs Rating:** Weak correlation (r≈0.3) - hype > quality
+
+![Popularity vs Rating Scatter](images/popularity_vs_rating.jpg)
+
 - **Yearly Revenue:** Exponential growth post-2009 (Marvel effect)
+
+![Yearly Box Office Trend](images/yearly_box_office_trend.jpg)
+
 - **Budget Scaling:** Bigger budgets → bigger hits (diminishing ROI returns)
+
+![Revenue vs Budget Scatter](images/revenuevsbudget.jpg)
 
 ## 🎯 Conclusions & Recommendations
 
@@ -102,6 +112,9 @@ Streamlit app with vote filtering
 1. **Franchise Focus:** 85% of top performers belong to collections
 2. **Budget Sweet Spot:** $200-300M maximizes ROI probability
 3. **Genre Priority:** Animation/Action > Drama
+
+![ROI Distribution by Genre](images/roi_distribution.jpg)
+
 4. **Director Leverage:** Proven track record >3x revenue multiplier
 
 ### Technical Excellence
