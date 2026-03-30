@@ -53,7 +53,7 @@ import seaborn as sns
 import os
 
 
-filepath = 'processed_movies.csv'
+filepath = 'data/processed_movies.csv'
 
 
 def load_csv(filepath):

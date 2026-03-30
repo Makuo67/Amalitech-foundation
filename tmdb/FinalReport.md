@@ -1,8 +1,8 @@
-# 🎬 TMDB Movie Analytics - Final Report
+# TMDB Movie Analytics - Final Report
 
 **Dataset:** TMDB Dataset
 
-## 📋 Executive Summary
+## Executive Summary
 
 **Key Finding:** Franchises generate **4.5x higher ROI** than standalone movies while maintaining comparable ratings. High-budget blockbusters (>$200M) achieve **85% success rate** (ROI>1x). Action/Adventure genres lead profitability.
 
@@ -12,7 +12,7 @@
 
 **Business Recommendation:** I would prioritize franchise sequels with proven directors in Action/Sci-Fi genres.
 
-## 🔬 Methodology
+## Methodology
 
 ### 1. Data Pipeline (ETL Excellence)
 
@@ -47,7 +47,7 @@ Dashboard-ready Matplotlib/Seaborn figures
 
 Streamlit Dashboard
 
-## 📊 Key Insights
+## Key Insights
 
 ### 1. Financial Performance
 
@@ -68,7 +68,7 @@ Streamlit Dashboard
 | Franchise | $1.2B | 4.8x | 17.2 | 7.5 |
 | Standalone | $780M | 1.1x | 12.8 | 7.4 |
 
-![Franchise vs Standalone Comparison](images/franchise vs standalone.jpg)
+![Franchise vs Standalone Comparison](images/franchise_vs_standalone.jpg)
 
 **Top Franchises (total_revenue):**
 
@@ -91,7 +91,7 @@ Streamlit Dashboard
 
 ![Popularity vs Rating Scatter](images/popularity_vs_rating.jpg)
 
-- **Yearly Revenue:** Exponential growth pre-2009
+- **Yearly Revenue:** Linear growth pre-2009
 
 ![Yearly Box Office Trend](images/yearly_box_office_trend.jpg)
 
@@ -99,7 +99,7 @@ Streamlit Dashboard
 
 ![Revenue vs Budget Scatter](images/revenuevsbudget.jpg)
 
-## 🎯 Conclusions & Recommendations
+## Conclusions & Recommendations
 
 ### Strategic Insights
 

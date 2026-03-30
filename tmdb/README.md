@@ -1,4 +1,4 @@
-# TMDB Movie Analytics Pipeline 🎬
+# TMDB Movie Analytics Pipeline
 
 ## Data Engineering Project Overview
 
@@ -6,7 +6,7 @@
 **Purpose:** End-to-end ETL pipeline for TMDB movie data analysis focusing on financial performance (ROI/profit), KPIs, franchise insights, visualizations, and interactive dashboard.  
 **Dataset:** TMDB (~20 high-profile movies like Avengers, Avatar) with budget/revenue in **$ millions USD**.
 
-## 📊 Architecture
+## Architecture
 
 ```
 tmdb_api.py (API Fetch)
@@ -23,7 +23,7 @@ processed_movies.csv (23 columns: title/budget/revenue/genres/cast/director/ROI 
 images/ (Generated plots)
 ```
 
-## 🛠️ Key Features
+## Key Features
 
 - **ETL Pipeline:** API → JSON parsing → Pipe-delimited strings (genres/cast) → Numeric cleaning → Feature eng (cast_size/crew_size/director extraction).
 - **Financial Metrics:** Profit (revenue-budget), ROI (revenue/budget), filtered rankings (min budget/votes).
@@ -31,7 +31,7 @@ images/ (Generated plots)
 - **Visuals:** Revenue-budget scatter, ROI by genre boxplot, popularity-rating regression, yearly trends, franchise comparison.
 - **Dashboard:** Streamlit app with vote filters displaying all plots.
 
-## 📋 Data Schema (processed_movies.csv)
+## Data Schema (processed_movies.csv)
 
 | Column                | Type       | Description                 |
 | --------------------- | ---------- | --------------------------- |
@@ -49,7 +49,7 @@ images/ (Generated plots)
 
 **Sample:** Avengers: Endgame - budget $356M, revenue $2799M, ROI ~7.86x
 
-## 🚀 Quick Start
+## Quick Start
 
 1. Set `TMDB_API_KEY` in `.env`
 2. Run ETL: `cd tmdb && python pre_process.py`
@@ -57,21 +57,21 @@ images/ (Generated plots)
 4. Generate plots: `python visualizations.py` (manual) or via dashboard
 5. Launch Dashboard: `streamlit run dashboard.py`
 
-## 📈 Key Insights (from Pipeline)
+## Key Insights (from Pipeline)
 
 - **Top ROI:** High-budget blockbusters (Avengers series dominate).
 - **Franchises outperform** standalone in revenue/ROI/popularity.
 - **Directors:** Christopher Nolan/James Cameron lead revenue; ratings more varied.
 - **Trends:** Revenue correlates positively with budget/popularity.
 
-## 🐛 Dependencies
+## Dependencies
 
 ```
 pandas, requests, streamlit, matplotlib, seaborn, python-dotenv
 pip install -r requirements.txt  # Create if needed
 ```
 
-## 🧪 Usage Examples
+## Usage Examples
 
 ```python
 # Re-run ETL
@@ -87,7 +87,7 @@ from movie_performance import franchise_success
 print(franchise_success())
 ```
 
-## 📄 File Documentation
+## File Documentation
 
 See inline **docstrings** in each `.py` file for detailed function specs.
 
