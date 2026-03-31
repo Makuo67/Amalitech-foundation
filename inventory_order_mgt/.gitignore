@@ -1,0 +1,20 @@
+# Node.js / npm
+node_modules/
+npm-debug.log
+
+# Python
+__pycache__/
+*.pyc
+
+# OS / system files
+.DS_Store
+*.swp
+*.swo
+*.log
+
+# IDE / editor
+.vscode/
+.idea/
+
+# Docker
+*.env
