@@ -45,7 +45,7 @@ inventory_order_mgt/
 customers 1 ---> * orders 1 ---> * order_items * <--- 1 products <--- 1 inventory
 ```
 
-![Full visual ERD] (erd/simba-database-schema.jpg)
+![Full visual ERD](erd/simba-database-schema.jpg)
 
 ## Setup Instructions
 
